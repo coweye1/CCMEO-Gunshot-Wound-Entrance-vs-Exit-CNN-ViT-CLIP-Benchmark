@@ -54,15 +54,15 @@ Below is the definitive performance matrix compiled at the best-performing train
 
 | Rank | Model Name | Model Family | Parameters Type | Validation ROC-AUC | Peak Epoch |
 | :---: | :--- | :---: | :---: | :---: | :---: |
-| 🥇 | **ConvNeXt-V2-Tiny** | CNN | Full Fine-Tuning | **0.8918** | Ep 3 |
-| 🥈 | DINOv2-Small | ViT | Full Fine-Tuning | 0.8884 | Ep 16 |
-| 🥉 | Swin-Tiny | ViT | Full Fine-Tuning | 0.8800 | Ep 4 |
+| 1 | **ConvNeXt-V2-Tiny** | CNN | Full Fine-Tuning | **0.8918** | Ep 3 |
+| 2 | DINOv2-Small | ViT | Full Fine-Tuning | 0.8884 | Ep 16 |
+| 3 | Swin-Tiny | ViT | Full Fine-Tuning | 0.8800 | Ep 4 |
 | 4 | ViT-Small | ViT | Full Fine-Tuning | 0.8576 | Ep 3 |
 | 5 | ResNet50 | CNN | Full Fine-Tuning | 0.8526 | Ep 15 |
-| 6 | **BiomedCLIP** | Multi-modal | **Linear Probe (6KB)** | 0.8396 | Ep 20 |
-| 7 | **General CLIP** | Multi-modal | **Linear Probe (6KB)** | 0.8340 | Ep 19 |
+| 6 | **BiomedCLIP** | Multi-modal | **Linear Probe** | 0.8396 | Ep 20 |
+| 7 | **General CLIP** | Multi-modal | **Linear Probe** | 0.8340 | Ep 19 |
 | 8 | EfficientNet-B0 | CNN | Full Fine-Tuning | 0.7940 | Ep 20 |
-| 9 | **PLIP** | Multi-modal | **Linear Probe (6KB)** | 0.7932 | Ep 19 |
+| 9 | **PLIP** | Multi-modal | **Linear Probe** | 0.7932 | Ep 19 |
 
 ### 🔑 Key Takeaways
 1. **ConvNeXt-V2-Tiny** achieved the highest overall performance with an **Accuracy of 83.5%** and a dominant **ROC-AUC of 0.8918**, proving the massive potential of modernized ConvNets in specialized clinical/forensic tasks.
