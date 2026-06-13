@@ -18,8 +18,13 @@ The core foundation of this benchmark relies on high-resolution, certified foren
 * **Total Enrolled Cohort:** **315 distinct forensic autopsy cases** presenting with firearm trauma.
 * **Total Compiled Dataset:** **1,639 high-resolution images**
 
+### ✂️ Manual ROI Extraction & Artifact Elimination
+To enforce the highest standard of data purity, every single image in the dataset was **manually cropped into a strict 1:1 square aspect ratio**. During this meticulous extraction process, explicit care was taken to exclude all external forensic artifacts and potential confounding variables. 
+* **Eliminated Elements:** Autopsy case number tags, surgical sutures, visible bullets/projectiles lodged near the wound, and non-cutaneous background environments.
+* **Scientific Purpose:** By framing the entire image purely within the margins of intact skin and the immediate wound architecture, the AI models are strictly blocked from exploiting artificial shortcuts or background contextual metadata, forcing them to learn authentic pathological lesion morphology.
+
 ### 🔄 Data Partitioning Matrix
-To ensure absolute empirical integrity and eliminate visual shortcutting (e.g., the model "cheating" by recognizing identical skin tones, specific tattoos, or unique autopsy room background artifacts), the dataset was strictly partitioned at a rigorous **case-independent level**. This guarantees that all images originating from a single forensic case are restricted entirely to either the Training set or the Validation set, with zero cross-contamination.
+To ensure absolute empirical integrity and eliminate visual shortcutting (e.g., the model "cheating" by recognizing identical skin tones or specific tattoos), the dataset was strictly partitioned at a rigorous **case-independent level**. This guarantees that all images originating from a single forensic case are restricted entirely to either the Training set or the Validation set, with zero cross-contamination.
 
 | Wound Category | Total Images | Training Set | Validation Set |
 | :--- | :---: | :---: | :---: |
