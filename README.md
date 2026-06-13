@@ -32,10 +32,12 @@ To ensure absolute empirical integrity, the dataset was strictly partitioned at 
 | **Exit Wounds** | 660 | 538 | 122 |
 | **Combined Total** | **1,639** | **1,311** | **328** |
 
-### ⚖️ Cost-Sensitive Learning (Class Imbalance Handling)
-Due to the baseline population asymmetry between Entrance (979 images) and Exit (660 images) samples, we injected a class-weighted penalty matrix into the optimization loss function to prevent algorithmic majority-class bias:
-* **Weighted Loss Implementation:** A specialized `nn.CrossEntropyLoss` was configured with inverse-frequency weight coefficients $W = [1.0, 1.48]$. 
-* **Scientific Purpose:** By multiplying the optimization penalty by **1.48x** whenever the model misclassifies a minority-class Exit Wound, the training pipeline actively forces the internal neural gradients to balance out and respect the unique morphology of both target classes equally.
+### ⚖️ Adjusting for Data Imbalance (Weighted Loss)
+In our dataset, there are naturally more entrance wound images (979) than exit wound images (660). If left unaddressed, an AI model can easily become biased toward the majority class (entrance wounds), leading to a higher rate of false negatives for exit wounds.
+
+To ensure completely unbiased and fair diagnostic training, we applied a statistical correction to our loss function (`nn.CrossEntropyLoss`):
+* **The Mechanism:** We assigned a higher mathematical weight (1.48x) whenever the model misclassifies an exit wound. 
+* **The Purpose:** This penalizes errors on the scarcer exit wound data more severely, actively forcing the AI to study the unique morphological features of both wound types with equal clinical importance.
 
 ---
 
