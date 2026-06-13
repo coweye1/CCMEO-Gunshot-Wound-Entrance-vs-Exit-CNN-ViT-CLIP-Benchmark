@@ -19,7 +19,7 @@ The core foundation of this benchmark relies on high-resolution, certified foren
 * **Total Compiled Dataset:** **1,639 high-resolution images**
 
 ### 🔄 Data Partitioning Matrix
-To ensure zero data leakage and guarantee empirical validation integrity, the dataset was strictly partitioned at the case-independent level, resulting in the following exact distribution:
+To ensure absolute empirical integrity and eliminate visual shortcutting (e.g., the model "cheating" by recognizing identical skin tones, specific tattoos, or unique autopsy room background artifacts), the dataset was strictly partitioned at a rigorous **case-independent level**. This guarantees that all images originating from a single forensic case are restricted entirely to either the Training set or the Validation set, with zero cross-contamination.
 
 | Wound Category | Total Images | Training Set | Validation Set |
 | :--- | :---: | :---: | :---: |
@@ -27,7 +27,7 @@ To ensure zero data leakage and guarantee empirical validation integrity, the da
 | **Exit Wounds** | 660 | 538 | 122 |
 | **Combined Total** | **1,639** | **1,311** | **328** |
 
-*Note: The split was executed via stratifying metrics to perfectly preserve the morphological distribution and class ratios across both subsets without overlap.*
+*Note: The split was executed via stratifying metrics to perfectly preserve the morphological distribution and class ratios across both subsets without overlap, enforcing the framework to rely strictly on true pathological lesion morphology rather than background metadata.*
 
 ---
 
