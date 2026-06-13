@@ -100,6 +100,3 @@ To guarantee that the AI is relying on genuine pathological features rather than
 * scikit-learn, matplotlib, seaborn, opencv-python
 
 ---
-
-## 🚀 Future Works: Phase 2
-Building upon this solid baseline benchmark registry, the next iteration expands into **Multimodal Vision-Language Foundations (CLIP)**. We will evaluate zero-shot adaptation by aligning forensic gross pathology imagery with structured, textual autopsy narratives to unlock context-aware artificial intelligence.
