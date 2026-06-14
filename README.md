@@ -73,15 +73,15 @@ All model checkpoints were captured at their peak validation epoch using Full Fi
 
 | Rank | Model Name | Model Family | Line Style | Peak Validation ROC-AUC | Peak Epoch |
 | :---: | :--- | :---: | :---: | :---: | :---: |
-| 1 | **MaxViT-Tiny** | Hybrid | Dotted (`:`) | **0.8950** | Ep 18 |
-| 2 | **CoAtNet-0** | Hybrid | Dotted (`:`) | **0.8800** | Ep 17 |
-| 3 | **ConvNeXt-V2-Tiny** | CNN | Solid (`-`) | **0.8730** | Ep 6 |
-| 4 | ViT-Small | ViT | Dashed (`--`) | 0.8710 | Ep 5 |
-| 5 | DINOv2-Small | ViT | Dashed (`--`) | 0.8650 | Ep 19 |
-| 6 | Visformer-Small | Hybrid | Dotted (`:`) | 0.8540 | Ep 13 |
-| 7 | DeiT-Tiny | ViT | Dashed (`--`) | 0.8450 | Ep 5 |
-| 8 | EfficientNet-B0 | CNN | Solid (`-`) | 0.8300 | Ep 20 |
-| 9 | ResNet50 *(Baseline)* | CNN | Solid (`-`) | 0.8170 | Ep 1 |
+| 1 | **ConvNeXt-V2-Tiny** | CNN | Solid (`-`) | **0.8959** | Ep 10 |
+| 2 | **DINOv2-Small** | ViT | Dashed (`--`) | **0.8821** | Ep 12 |
+| 3 | **Visformer-Small** | Hybrid | Dotted (`:`) | **0.8792** | Ep 6 |
+| 4 | CoAtNet-0 | Hybrid | Dotted (`:`) | 0.8767 | Ep 4 |
+| 5 | ViT-Small | ViT | Dashed (`--`) | 0.8578 | Ep 12 |
+| 6 | MaxViT-Tiny | Hybrid | Dotted (`:`) | 0.8638 | Ep 11 |
+| 7 | DeiT-Tiny | ViT | Dashed (`--`) | 0.8532 | Ep 9 |
+| 8 | ResNet50 *(Baseline)* | CNN | Solid (`-`) | 0.8265 | Ep 17 |
+| 9 | EfficientNet-B0 | CNN | Solid (`-`) | 0.7871 | Ep 20 |
 
 ### 🇧🇷 External Validation (Brazil GuWID Dataset - Out-of-Distribution)
 Robustness check on completely independent data (2,554 images) to verify real-world domain generalization bounds.
