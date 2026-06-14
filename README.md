@@ -71,17 +71,17 @@ Below is the definitive performance matrix compiled across all 9 vision architec
 ### 📝 Internal Validation (CCMEO Dataset)
 All model checkpoints were captured at their peak validation epoch using Full Fine-Tuning.
 
-| Rank | Model Name | Model Family | Line Style | Peak Validation ROC-AUC | Peak Epoch |
-| :---: | :--- | :---: | :---: | :---: | :---: |
-| 1 | **ConvNeXt-V2-Tiny** | CNN | Solid (`-`) | **0.8959** | Ep 10 |
-| 2 | **DINOv2-Small** | ViT | Dashed (`--`) | **0.8821** | Ep 12 |
-| 3 | **Visformer-Small** | Hybrid | Dotted (`:`) | **0.8792** | Ep 6 |
-| 4 | CoAtNet-0 | Hybrid | Dotted (`:`) | 0.8767 | Ep 4 |
-| 5 | ViT-Small | ViT | Dashed (`--`) | 0.8578 | Ep 12 |
-| 6 | MaxViT-Tiny | Hybrid | Dotted (`:`) | 0.8638 | Ep 11 |
-| 7 | DeiT-Tiny | ViT | Dashed (`--`) | 0.8532 | Ep 9 |
-| 8 | ResNet50 *(Baseline)* | CNN | Solid (`-`) | 0.8265 | Ep 17 |
-| 9 | EfficientNet-B0 | CNN | Solid (`-`) | 0.7871 | Ep 20 |
+| Rank | Model Name | Model Family | Accuracy | Precision | Recall (Sens.) | F1-Score | **Peak Validation ROC-AUC** | Peak Epoch |
+| :---: | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| 1 | **ConvNeXt-V2-Tiny** | CNN | 0.8354 | 0.7698 | 0.7951 | 0.7823 | **0.8959** | Ep 10 |
+| 2 | **DINOv2-Small** | ViT | 0.8201 | 0.7890 | 0.7049 | 0.7446 | **0.8821** | Ep 12 |
+| 3 | **Visformer-Small** | Hybrid | 0.8079 | 0.7185 | 0.7951 | 0.7549 | **0.8792** | Ep 6 |
+| 4 | CoAtNet-0 | Hybrid | 0.8049 | 0.7132 | 0.7951 | 0.7519 | 0.8767 | Ep 4 |
+| 5 | ViT-Small | ViT | 0.7835 | 0.7802 | 0.5820 | 0.6667 | 0.8578 | Ep 12 |
+| 6 | MaxViT-Tiny | Hybrid | 0.8018 | 0.7209 | 0.7623 | 0.7410 | 0.8638 | Ep 11 |
+| 7 | DeiT-Tiny | ViT | 0.7713 | 0.6478 | 0.8443 | 0.7331 | 0.8532 | Ep 9 |
+| 8 | ResNet50 *(Baseline)* | CNN | 0.7561 | 0.6329 | 0.8197 | 0.7143 | 0.8265 | Ep 17 |
+| 9 | EfficientNet-B0 | CNN | 0.7226 | 0.6115 | 0.6967 | 0.6513 | 0.7871 | Ep 20 |
 
 ### 🇧🇷 External Validation (Brazil GuWID Dataset - Out-of-Distribution)
 Robustness check on completely independent data (2,554 images) to verify real-world domain generalization bounds.
