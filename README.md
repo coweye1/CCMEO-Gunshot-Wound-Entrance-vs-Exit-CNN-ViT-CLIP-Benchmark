@@ -46,11 +46,11 @@ To stress-test the domain generalization limits and prevent source-dataset bias,
 
 This benchmark dataset serves as a rigorous, cross-national "Final Exam" representing a major out-of-distribution (OOD) shift in forensic imaging setups.
 
-| Wound Category | Source Dataset Region | Pathological Type | Total Images | Evaluation Use |
-| :--- | :---: | :---: | :---: | :---: |
-| **Entrance Wounds** | University of Brasília | *entradas_eqx* | **1,883 images** | External Validation |
-| **Exit Wounds** | University of Brasília | *saidas_eqx* | **671 images** | External Validation |
-| **Combined Total** | **Federation of Brazil** | **[GuWID Repository](https://github.com/pedrogarciafreitas/GuWID-UnB)** | **2,554 images** | **Robustness Stress-Test** |
+| Wound Category | Source Dataset Region | Total Images | Evaluation Use |
+| :--- | :---: | :---: | :---: |
+| **Entrance Wounds** | National University of Brasília | **1,883 images** | External Validation |
+| **Exit Wounds** | National University of Brasília | **671 images** | External Validation |
+| **Combined Total** | **Federation of Brazil (UnB)** | **2,554 images** | **Robustness Stress-Test** |
 
 * **Scale Contrast:** The external testing cohort (**2,554 images**) is significantly larger than the internal validation subset (**328 images**), providing immense statistical power to evaluate true real-world diagnostic performance and algorithmic clinical safety across continents.
 
@@ -66,10 +66,12 @@ Nine diverse deep learning backbones across three architectural families were tr
 ---
 
 ## 📊 Benchmarking Performance Metrics
-Below is the definitive performance matrix compiled across all 9 vision architectures during internal validation and strict external validation on the Brazilian public dataset.
+All 9 vision architectures were trained for a fixed duration of **20 full epochs**. To secure the most robust and clinically optimal checkpoint, the definitive weight files were extracted from the precise training epoch where the framework achieved its **Peak Validation ROC-AUC** score. 
+
+Below are the comparative performance matrices captured under this empirical strategy.
 
 ### 📝 Internal Validation (CCMEO Dataset)
-All model checkpoints were captured at their peak validation epoch using Full Fine-Tuning.
+Performance quantified via full fine-tuning on the case-independent internal validation partition.
 
 | Rank | Model Name | Model Family | Accuracy | Precision | Recall (Sens.) | F1-Score | **Peak Validation ROC-AUC** | Peak Epoch |
 | :---: | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
@@ -127,8 +129,12 @@ The Receiver Operating Characteristic (ROC) curves illustrate discriminative per
 
 ### 3. Multi-Architecture Confusion Matrices (3x3 Grid Layout)
 A complete 3x3 grid layout mapping out the exact classification distribution (True vs. Predicted Labels) across all 9 models. Cell values display raw sample counts alongside percentage ratios to reveal precise directional error tendencies under severe domain shifts.
-* **Internal Grid (CCMEO):** `confusion_matrix_3x3.png`
-* **External Grid (GuWID):** `GuWID_9_models_external_confusion_matrix_3x3_real.png`
+
+#### Internal Confusion Matrix Grid (CCMEO)
+![Internal Confusion Matrix 3x3](confusion_matrix_3x3.png)
+
+#### External Confusion Matrix Grid (GuWID)
+![External Confusion Matrix 3x3](GuWID_9_models_external_confusion_matrix_3x3_real.png)
 
 ### 4. Explainable AI (XAI): Visualizing AI Diagnostic Focus (Grad-CAM)
 To guarantee that the AI relies on genuine pathological features rather than background artifacts, Grad-CAM visual heatmaps highlight the exact pixel regions our top models focused on during final classification.
