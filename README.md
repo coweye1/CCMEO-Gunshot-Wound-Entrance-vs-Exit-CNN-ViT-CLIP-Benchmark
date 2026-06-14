@@ -114,7 +114,7 @@ Robustness check on completely independent data (2,554 images) with cross-valida
 
 ### 1. Validation AUC Trajectory Across 20 Epochs
 The training history maps the longitudinal convergence behavior of the 9 architectures. Starred markers ($\star$) denote the precise peak where checkpoints were extracted, along with labeled raw AUC values. Modern Hybrid architectures (MaxViT, CoAtNet) and Transformer backbones establish elite representation stability over pure standard CNNs.
-![Epoch AUC Trend](CCMEO_9_models_validation_auc_trajectory_official.png)
+![Epoch AUC Trend](CCMEO_9_models_validation_auc_trajectory.png)
 
 ### 2. Integrated ROC Curves (Internal vs. External Validation)
 The Receiver Operating Characteristic (ROC) curves illustrate discriminative performance. While standard CNN backbones like EfficientNet-B0 experience severe performance degradation when shifted to the Brazilian dataset, Hybrid and ViT networks maintain strong generalization bounds, proving their robust global context capacity.
