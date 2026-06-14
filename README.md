@@ -1,12 +1,12 @@
 # CCMEO Gunshot Wound Benchmarking: Entrance vs. Exit Wound Classification
-Advanced deep learning benchmark study evaluating Convolutional Network-based (CNN), Vision Transformer-based (ViT), and Hybrid SOTA Architectures on forensic pathology datasets at the Cook County Medical Examiner's Office (CCMEO) with Large-Scale External Validation on the Brazilian GuWID Dataset.
+Advanced deep learning benchmark study evaluating Convolutional Network-based (CNN), Vision Transformer-based (ViT), and Hybrid SOTA Architectures on forensic pathology datasets at the Cook County Medical Examiner's Office (CCMEO) with Large-Scale External Validation on the GuWID-UnB Dataset.
 
 ---
 
 ## 📌 Project Overview
 In forensic pathology, distinguishing between **Entrance Wounds** and **Exit Wounds** is a critical task for reconstructing shooting incidents, determining bullet trajectories, and providing medical-legal testimony. 
 
-This repository implements and benchmarks nine state-of-the-art computer vision architectures divided across three distinct design paradigms (CNNs, Vision Transformers, and Hybrid CNN-ViT Models) to automate and objectively analyze morphology patterns in gunshot wound trauma. Leveraging pure PyTorch and `timm`, all models were evaluated on high-resolution forensic autopsy datasets from the CCMEO and further stress-tested via cross-continental external validation to verify real-world algorithmic safety and robustness.
+This repository implements and benchmarks nine state-of-the-art computer vision architectures divided across three distinct design paradigms (CNNs, Vision Transformers, and Hybrid CNN-ViT Models) to automate and objectively analyze morphology patterns in gunshot wound trauma. Leveraging pure PyTorch and `timm`, all models were evaluated on high-resolution forensic autopsy datasets from the CCMEO and further stress-tested via large-scale external validation to verify real-world algorithmic safety and robustness against severe domain shifts.
 
 ---
 
@@ -41,10 +41,10 @@ To ensure completely unbiased and fair diagnostic training, we applied a statist
 
 ---
 
-## 🇧🇷 External Validation Cohort (Brazil GuWID Dataset)
-To stress-test the domain generalization limits and prevent source-dataset bias, we introduced the completely independent **Gunshot Wound Image Database (GuWID)** compiled by the National University of Brasília (UnB), Brazil. This benchmark dataset is officially accessible via their public repository: [pedrogarciafreitas/GuWID-UnB](https://github.com/pedrogarciafreitas/GuWID-UnB). 
+## 🔬 External Validation Cohort (GuWID-UnB Dataset)
+To stress-test the domain generalization limits and prevent source-dataset bias, we introduced the completely independent **Gunshot Wound Image Database (GuWID)**. This dataset was constructed as part of the study titled *"Deep Learning-Based Human Gunshot Wounds Classification"* by Renato Queiroz Nogueira Lira et al., in collaboration with the University of Brasília (UnB) and other institutions. The benchmark dataset is officially accessible via their public repository: [pedrogarciafreitas/GuWID-UnB](https://github.com/pedrogarciafreitas/GuWID-UnB).
 
-Serving as a rigorous cross-national "Final Exam," this out-of-distribution (OOD) cohort challenges the models across severe demographic and acquisition protocol shifts.
+Serving as a rigorous external "Final Exam," this out-of-distribution (OOD) cohort challenges the models across severe demographic shifts, distinct photography setups, and varied lesion-acquisition protocols.
 
 | Wound Category (GuWID External Evaluation Cohort) | Total Images |
 | :--- | :---: |
@@ -52,7 +52,7 @@ Serving as a rigorous cross-national "Final Exam," this out-of-distribution (OOD
 | **Exit Wounds** | **671 images** |
 | **Combined Total (Robustness Stress-Test)** | **2,554 images** |
 
-* **Scale Contrast:** The external testing cohort (**2,554 images**) is significantly larger than the internal validation subset (**328 images**), providing immense statistical power to evaluate true real-world diagnostic performance and algorithmic clinical safety across continents.
+* **Scale Contrast:** The external testing cohort (**2,554 images**) is significantly larger than the internal validation subset (**328 images**), providing immense statistical power to evaluate true real-world diagnostic performance and algorithmic clinical safety across distinct institutional frameworks.
 
 ---
 
@@ -85,7 +85,7 @@ Performance quantified via full fine-tuning on the case-independent internal val
 | 8 | ResNet50 *(Baseline)* | CNN | 0.7561 | 0.6329 | 0.8197 | 0.7143 | 0.8265 | Ep 17 |
 | 9 | EfficientNet-B0 | CNN | 0.7226 | 0.6115 | 0.6967 | 0.6513 | 0.7871 | Ep 20 |
 
-### 🇧🇷 External Validation (Brazil GuWID Dataset - Out-of-Distribution)
+### 🔍 External Validation (GuWID-UnB Dataset - Out-of-Distribution)
 Robustness check on completely independent data (2,554 images) with cross-validation ranking and directional performance gap analysis ($\Delta$ ROC-AUC = External AUC - Internal AUC).
 
 | Rank | Model Name | Model Family | Accuracy | Precision | Recall (Sens.) | F1-Score | **External ROC-AUC** | **$\Delta$ ROC-AUC** |
@@ -100,15 +100,15 @@ Robustness check on completely independent data (2,554 images) with cross-valida
 | 8 | DeiT-Tiny | ViT | 0.7494 | 0.5161 | 0.7392 | 0.6078 | 0.8248 | $-0.0284$ |
 | 9 | EfficientNet-B0 | CNN | 0.6934 | 0.4395 | 0.6066 | 0.5097 | 0.7322 | $-0.0549$ |
 
-### 🔑 Key Takeaways & Cross-Continental Generalization Analysis
+### 🔑 Key Takeaways & Robustness Generalization Analysis
 
-1. **Elite Large-Scale Generalization:** Modern architectures exhibited outstanding domain stability. Even when evaluated on a massive, completely unseen cross-national dataset of **2,554 images (GuWID, Brazil)**, the top-performing **MaxViT-Tiny** and **ViT-Small** models maintained robust discriminative capacity, scoring **ROC-AUCs of 0.8577 and 0.8550** respectively.
-2. **The Discrepancy of Internal Champions (ConvNeXt-V2 vs. DINOv2):** While **ConvNeXt-V2-Tiny** (Internal Rank #1) and **DINOv2-Small** (Internal Rank #2) dominated internal validation, they suffered noticeable performance drops when exposed to the Brazilian OOD shift. 
-   * *ConvNeXt-V2's Locality Bias:* Despite being a modernized CNN, its strong *inductive bias for local textures* overfitted to site-specific variables (CCMEO photography gear, lighting conditions, specific cutaneous resolution), resulting in a performance drop ($\Delta$ AUC: $-0.0492$) and falling to 3rd place.
+1. **Elite Large-Scale Generalization:** Modern architectures exhibited outstanding domain stability. Even when evaluated on a massive, completely unseen external dataset of **2,554 images (GuWID-UnB)**, the top-performing **MaxViT-Tiny** and **ViT-Small** models maintained robust discriminative capacity, scoring **ROC-AUCs of 0.8577 and 0.8550** respectively.
+2. **The Discrepancy of Internal Champions (ConvNeXt-V2 vs. DINOv2):** While **ConvNeXt-V2-Tiny** (Internal Rank #1) and **DINOv2-Small** (Internal Rank #2) dominated internal validation, they suffered noticeable performance drops when exposed to the GuWID-UnB OOD shift. 
+   * *ConvNeXt-V2's Locality Bias:* Despite being a modernized CNN, its strong *inductive bias for local textures* overfitted to site-specific variables (CCMEO photography gear, ambient lighting conditions, specific cutaneous resolution), resulting in a performance drop ($\Delta$ AUC: $-0.0492$) and falling to 3rd place.
    * *DINOv2's Pre-training Bias:* DINOv2's massive self-supervised foundation weights carry a strong bias toward *everyday natural images (animals, scenery, everyday objects)*. While it segmented internal wounds efficiently, it tended to overfit to non-forensic macro-features, leading to the largest performance degradation among SOTA models ($\Delta$ AUC: $-0.0517$, dropping to 6th place) under severe demographic and camera property shifts.
 3. **The Hybrid & Pure ViT Generalization Triumph:**
    In contrast, **MaxViT-Tiny** achieved the highest external validation AUC (0.8577, Rank #1) with minimal decay ($\Delta$ AUC: $-0.0061$). Its stacked grid-attention architecture seamlessly fuses local CNN features with global context layers, neutralizing site-specific noise. Similarly, **ViT-Small** (Rank #2) demonstrated the absolute minimal performance gap ($\Delta$ AUC of only $-0.0028$) because its non-local *global attention mechanism* looks past micro-pixel variations and directly focuses on the invariant, macro-geometric architecture of gunshot wounds (e.g., circular abrasion margins vs. irregular lacerated tears).
-4. **The CNN Brittleness Discovery:** While light CNN frameworks like **EfficientNet-B0** performed acceptably during internal validation, they collapsed under the massive 2,554-image Brazilian dataset (AUC dropping down to **0.7322**, $\Delta$ AUC: $-0.0549$), highlighting that classic standard CNNs suffer from critical spatial distribution over-fitting. This discovery underscores the absolute necessity of moving toward Transformer-based Global Context architectures in modern computational forensics.
+4. **The CNN Brittleness Discovery:** While light CNN frameworks like **EfficientNet-B0** performed acceptably during internal validation, they collapsed under the massive 2,554-image GuWID-UnB dataset (AUC dropping down to **0.7322**, $\Delta$ AUC: $-0.0549$), highlighting that classic standard CNNs suffer from critical spatial distribution over-fitting. This discovery underscores the absolute necessity of moving toward Transformer-based Global Context architectures in modern computational forensics.
 
 ---
 
@@ -119,12 +119,12 @@ The training history maps the longitudinal convergence behavior of the 9 archite
 ![Epoch AUC Trend](CCMEO_9_models_validation_auc_trajectory.png)
 
 ### 2. Integrated ROC Curves (Internal vs. External Validation)
-The Receiver Operating Characteristic (ROC) curves illustrate discriminative performance. While standard CNN backbones like EfficientNet-B0 experience severe performance degradation when shifted to the Brazilian dataset, Hybrid and ViT networks maintain strong generalization bounds, proving their robust global context capacity.
+The Receiver Operating Characteristic (ROC) curves illustrate discriminative performance. While standard CNN backbones like EfficientNet-B0 experience severe performance degradation when shifted to the GuWID-UnB dataset, Hybrid and ViT networks maintain strong generalization bounds, proving their robust global context capacity.
 
 #### Internal ROC Curve (CCMEO)
 ![Internal ROC Curves](CCMEO_9_models_internal_roc_curves.png)
 
-#### External ROC Curve (GuWID)
+#### External ROC Curve (GuWID-UnB)
 ![External ROC Curves](GuWID_9_models_external_roc_curves.png)
 
 ### 3. Multi-Architecture Confusion Matrices (3x3 Grid Layout)
@@ -133,7 +133,7 @@ A complete 3x3 grid layout mapping out the exact classification distribution (Tr
 #### Internal Confusion Matrix Grid (CCMEO)
 ![Internal Confusion Matrix 3x3](CCMEO_9_models_internal_confusion_matrix.png)
 
-#### External Confusion Matrix Grid (GuWID)
+#### External Confusion Matrix Grid (GuWID-UnB)
 ![External Confusion Matrix 3x3](GuWID_9_models_external_confusion_matrix.png)
 
 ### 4. Explainable AI (XAI): Visualizing AI Diagnostic Focus (Grad-CAM)
