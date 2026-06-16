@@ -84,9 +84,9 @@ Serving as a rigorous external "Final Exam," this out-of-distribution (OOD) coho
 ## 🔬 Evaluated Model Lineup (9 Architectures)
 Nine diverse deep learning backbones across three architectural families were trained and optimized using dynamic image resolutions matching their pre-trained infrastructures:
 
-* **CNN Family (Solid Lines):** ResNet50, EfficientNet-B0, ConvNeXt-V2-Tiny
-* **ViT Family (Dashed Lines):** ViT-Small, DeiT-Tiny, DINOv2-Small (Self-Supervised)
-* **CNN-ViT Hybrid Family (Dotted Lines):** Visformer-Small, CoAtNet-0, MaxViT-Tiny
+* **CNN Family :** ResNet50, EfficientNet-B0, ConvNeXt-V2-Tiny
+* **ViT Family :** ViT-Small, DeiT-Tiny, DINOv2-Small (Self-Supervised)
+* **CNN-ViT Hybrid Family :** Visformer-Small, CoAtNet-0, MaxViT-Tiny
 
 ---
 
