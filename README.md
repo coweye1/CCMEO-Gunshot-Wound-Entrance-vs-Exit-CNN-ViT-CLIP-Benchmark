@@ -37,11 +37,12 @@ I spent hours manually cropping every single image into a strict 1:1 square aspe
 ### 🔄 Data Partitioning Matrix (Strict Case-Independence)
 To ensure absolute empirical integrity, the dataset was strictly partitioned at a rigorous case-independent level. This guarantees that all images originating from a single forensic case are restricted entirely to either the Training set or the Validation set, with zero cross-contamination.
 
-> 💡 **Why this partition matters (Preventing Data Leakage)?** > Imagine a single forensic case (Patient A) has 5 different photos taken from slightly different angles or under the same lighting. If I randomly split these photos—putting 4 into the Training set and 1 into the Validation set—the AI will easily get a perfect score on Patient A's testing photo. 
+> 💡 **Why this partition matters — To Prevent Data Leakage**
+> Imagine a single forensic case (Patient A) has 2 different photos taken from slightly different angles or distances. If I randomly split these photos—putting 1 into the Training set and 1 into the Validation set—there is a high risk that the AI will correctly classify Patient A's testing photo for the wrong reasons.
 > 
-> Why? Not because it genuinely understands gunshot wounds, but simply because it recognizes Patient A's specific skin tone, body location, or the unique lighting of that specific autopsy room. 
+> Instead of genuinely understanding gunshot wounds, the model is highly likely to adapt to Patient A's specific skin tone, body location, or the unique lighting of that specific autopsy room. 
 > 
-> By locking all images of a single patient onto one side of the fence, I ensure a truly honest and rigorous test: the AI is forced to judge a patient it has never, ever seen before.
+> By locking all images of a single patient onto one side of the fence, I eliminate this bias and ensure a truly honest, rigorous test: the AI is forced to judge a patient it has never, ever seen before.
 
 | Wound Category | Total Images | Training Set | Validation Set |
 | :--- | :---: | :---: | :---: |
