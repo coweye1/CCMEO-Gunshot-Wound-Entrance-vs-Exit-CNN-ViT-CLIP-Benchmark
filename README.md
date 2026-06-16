@@ -11,7 +11,6 @@ Advanced deep learning benchmark study evaluating Convolutional Neural Network-b
 > This repository presents a comprehensive **AI Performance Exam (Benchmark Study)** that I designed to answer that exact question for forensic pathology. 
 > 
 > I personally configured, trained, and evaluated 9 established Image AI models using real-world, certified autopsy photography from the **Cook County Medical Examiner's Office (CCMEO)**. Then, to test their true diagnostic adaptability, I challenged them with a completely blind "Final Exam" using the independent **GuWID-UnB dataset** (constructed by Renato Queiroz Nogueira Lira et al., in collaboration with the University of Brasília and other institutions). 
-> 
 
 In forensic pathology, distinguishing between **Entrance Wounds** and **Exit Wounds** is a critical task for reconstructing shooting incidents, determining bullet trajectories, and providing medical-legal testimony. 
 
@@ -38,8 +37,7 @@ During this meticulous manual extraction process, the following confounding vari
 ### 🔄 Data Partitioning Matrix (Strict Case-Independence)
 To ensure absolute empirical integrity, the dataset was strictly partitioned at a rigorous case-independent level. This guarantees that all images originating from a single forensic case are restricted entirely to either the Training set or the Validation set, with zero cross-contamination.
 
-> 💡 **Why this partition matters (Preventing Data Leakage)?** 
-> Imagine a single forensic case (Patient A) has 5 different photos taken from slightly different angles or under the same lighting. If I randomly split these photos—putting 4 into the Training set and 1 into the Validation set—the AI will easily get a perfect score on Patient A's testing photo. 
+> 💡 **Why this partition matters (Preventing Data Leakage)?** > Imagine a single forensic case (Patient A) has 5 different photos taken from slightly different angles or under the same lighting. If I randomly split these photos—putting 4 into the Training set and 1 into the Validation set—the AI will easily get a perfect score on Patient A's testing photo. 
 > 
 > Why? Not because it genuinely understands gunshot wounds, but simply because it recognizes Patient A's specific skin tone, body location, or the unique lighting of that specific autopsy room. 
 > 
@@ -61,12 +59,12 @@ To ensure completely unbiased and fair diagnostic training, I applied a statisti
 > 
 > To balance the scales in this hypothetical exam, we must mathematically make the rarer questions more valuable: since Entrance wounds outnumber Exit wounds by **4 to 1 (80:20)**, misclassifying a rare Exit wound should carry a **4.0x higher penalty**.
 > 
-> **Applying this to my actual dataset:** 
-> My real-world training set contains **773 Entrance Wounds** and **538 Exit Wounds**. To find the exact fair penalty, I calculated the inverse ratio of the classes:
+> **Applying this to my actual dataset:** > My real-world training set contains **773 Entrance Wounds** and **538 Exit Wounds**. To find the exact fair penalty, I calculated the inverse ratio of the classes:
 > 
 > $$\text{Penalty Weight for Exit Wounds} = \frac{773 \text{ (Entrance Images)}}{538 \text{ (Exit Images)}} \approx 1.48$$
 > 
 > By assigning this precise **1.48x higher penalty weight** whenever the model misclassifies a scarcer exit wound, the AI is effectively punished for ignoring the minority class. This actively forces the artificial brain to study the unique, subtle morphological features of both wound types with equal clinical importance.
+
 ---
 
 ## 🔬 External Validation Cohort (GuWID-UnB Dataset)
@@ -152,20 +150,18 @@ The training history maps the longitudinal convergence behavior of the 9 archite
 ### 2. Integrated ROC Curves (Internal vs. External Validation)
 The Receiver Operating Characteristic (ROC) curves illustrate discriminative performance. While standard CNN backbones like EfficientNet-B0 experience severe performance degradation when shifted to the GuWID-UnB dataset, Hybrid and ViT networks maintain strong generalization bounds, proving their robust global context capacity.
 
-#### Internal ROC Curve (CCMEO)
-![Internal ROC Curves](CCMEO_9_models_internal_roc_curves.png)
-
-#### External ROC Curve (GuWID-UnB)
-![External ROC Curves](GuWID_9_models_external_roc_curves.png)
+#### Internal ROC Curve (CCMEO) vs. External ROC Curve (GuWID-UnB)
+| Internal ROC (CCMEO) | External ROC (GuWID-UnB) |
+| :---: | :---: |
+| ![Internal ROC Curves](CCMEO_9_models_internal_roc_curves.png) | ![External ROC Curves](CCMEO_9_models_external_roc_curves.png) |
 
 ### 3. Multi-Architecture Confusion Matrices (3x3 Grid Layout)
 A complete 3x3 grid layout mapping out the exact classification distribution (True vs. Predicted Labels) across all 9 models. Cell values display raw sample counts alongside percentage ratios to reveal precise directional error tendencies under severe domain shifts.
 
-#### Internal Confusion Matrix Grid (CCMEO)
-![Internal Confusion Matrix 3x3](CCMEO_9_models_internal_confusion_matrix.png)
-
-#### External Confusion Matrix Grid (GuWID-UnB)
-![External Confusion Matrix 3x3](GuWID_9_models_external_confusion_matrix.png)
+#### Internal Confusion Matrix vs. External Confusion Matrix
+| Internal Confusion Matrix Grid (CCMEO) | External Confusion Matrix Grid (GuWID-UnB) |
+| :---: | :---: |
+| ![Internal Confusion Matrix 3x3](CCMEO_9_models_internal_confusion_matrix.png) | ![External Confusion Matrix 3x3](GuWID_9_models_external_confusion_matrix.png) |
 
 ### 4. Explainable AI (XAI): Visualizing AI Diagnostic Focus (Grad-CAM)
 To guarantee that the AI relies on genuine pathological features rather than background artifacts, Grad-CAM visual heatmaps highlight the exact pixel regions our top models focused on during final classification.
