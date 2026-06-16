@@ -20,7 +20,7 @@ The core foundation of this benchmark relies on high-resolution, certified foren
 * **Total Enrolled Cohort:** **315 distinct forensic autopsy cases** presenting with firearm trauma.
 * **Total Compiled Dataset:** **1,639 high-resolution images**
 
-### ✂️ Manual ROI Extraction & Artifact Elimination (Preventing AI "Cheating")
+### ✂️ Manual ROI Extraction & Artifact Elimination
 I spent hours manually cropping every single image into a strict 1:1 square aspect ratio (Region of Interest - ROI) to isolate the immediate wound architecture. During this meticulous manual extraction process, explicit care was taken to strictly exclude all confounding variables from the frame, such as autopsy case number tags, surgical sutures, visible bullets or projectiles lodged near the wound, and non-cutaneous background environments.
 
 > 💡 **Why this process matters — To Prevent AI "Cheating"**
@@ -28,7 +28,7 @@ I spent hours manually cropping every single image into a strict 1:1 square aspe
 > 
 > By completely stripping away these external artifacts and background context, I forced the artificial brain to learn authentic, universal pathological features purely from the morphology of the wound itself.
 
-### 🔄 Data Partitioning Matrix (Strict Case-Independence)
+### 🔄 Data Partitioning Matrix
 To ensure absolute empirical integrity, the dataset was strictly partitioned at a rigorous case-independent level. This guarantees that all images originating from a single forensic case are restricted entirely to either the Training set or the Validation set, with zero cross-contamination.
 
 > 💡 **Why this partition matters — To Prevent Data Leakage**
