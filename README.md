@@ -140,7 +140,13 @@ Robustness check on completely independent data (2,554 images) with cross-valida
 
 ### 1. Validation AUC Trajectory Across 20 Epochs
 The training history maps the longitudinal convergence behavior of the 9 architectures. Starred markers ($\star$) denote the precise peak where checkpoints were extracted, along with labeled raw AUC values. Modern **CNN-ViT Hybrid** architectures (MaxViT, CoAtNet) and Transformer backbones establish elite representation stability over pure standard CNNs.
+
 ![Epoch AUC Trend](CCMEO_9_models_validation_auc_trajectory.png)
+
+> 💡 **The Smart Checkpoint Strategy — Preventing "Overfitting"**
+> * **What is an Epoch?** In AI training, an "Epoch" means the model has studied the entire dataset exactly once. For this study, each model was given **20 complete Epochs**—meaning they went through the training materials 20 separate times to find underlying patterns.
+> * **The Danger of Overfitting:** If an AI studies the same material for too long, it begins to "overfit." This is like a student who memorizes every single comma and period in a practice textbook instead of understanding the actual concepts. On paper, they look like a genius, but they will completely crash on a real exam with new questions.
+> * **My Coding Solution:** To prevent this, my training pipeline does not simply take the final model at Epoch 20. Instead, the code constantly evaluates the AI's performance after every single epoch. The moment the model hits its highest exam score (**Peak Validation ROC-AUC**), the code immediately takes a snapshot and saves *only* those definitive, optimal weights ($\star$). This ensures we capture the AI at its peak intelligence, completely free from the corrupting effects of overfitting.
 
 ### 2. Integrated ROC Curves (Internal vs. External Validation)
 The Receiver Operating Characteristic (ROC) curves illustrate discriminative performance. While standard CNN backbones like EfficientNet-B0 experience severe performance degradation when shifted to the GuWID-UnB dataset, **CNN-ViT Hybrid** and ViT networks maintain strong generalization bounds, proving their robust global context capacity.
