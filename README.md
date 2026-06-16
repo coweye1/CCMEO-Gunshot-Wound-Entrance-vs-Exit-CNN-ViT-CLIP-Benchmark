@@ -53,12 +53,14 @@ To ensure absolute empirical integrity, the dataset was strictly partitioned at 
 | **Combined Total** | **1,639** | **1,311** | **328** |
 
 ### ⚖️ Adjusting for Data Imbalance (Weighted Loss)
-In our dataset, there are naturally more entrance wound images (979) than exit wound images (660). If left unaddressed, an AI model can easily become biased toward the majority class (entrance wounds), leading to a higher rate of false negatives for exit wounds.
+In this dataset, there are naturally more entrance wound images (979) than exit wound images (660). If left unaddressed, an AI model can easily become biased toward the majority class (entrance wounds), leading to a higher rate of false negatives for exit wounds. 
 
-To ensure completely unbiased and fair diagnostic training, we applied a statistical correction to our loss function (`nn.CrossEntropyLoss`):
-* **The Mechanism:** We assigned a higher mathematical weight (1.48x) whenever the model misclassifies an exit wound. 
-* **The Purpose:** This penalizes errors on the scarcer exit wound data more severely, actively forcing the AI to study the unique morphological features of both wound types with equal clinical importance.
+To ensure completely unbiased and fair diagnostic training, I applied a statistical correction to the loss function (`nn.CrossEntropyLoss`).
 
+> 💡 **Why this mathematical weight matters?**
+> Imagine an AI taking a 100-question multiple-choice exam where 80 questions happen to be "Entrance Wounds" and only 20 are "Exit Wounds." A lazy AI could simply guess "Entrance Wound" for every single question without studying at all, and it would still score a decent 80%. 
+> 
+> To prevent this "lazy guessing strategy," I introduced a mathematical penalty system. By assigning a **1.48x higher penalty weight** whenever the model misclassifies a scarcer exit wound, the AI is severely punished for ignoring the minority class. This actively forces the artificial brain to study the unique, subtle morphological features of both wound types with equal clinical importance.
 ---
 
 ## 🔬 External Validation Cohort (GuWID-UnB Dataset)
