@@ -76,11 +76,11 @@ Serving as a rigorous external "Final Exam," this out-of-distribution (OOD) coho
 > 💡 **Why this setup matters?**
 > If an AI model trained exclusively on CCMEO data can still successfully classify images from an entirely independent dataset (with different lighting, camera gear, and backgrounds), it proves that the algorithm is not just "cheating" by memorizing site-specific photography styles. Instead, it demonstrates that the AI has truly mastered the universal, authentic pathological features of gunshot wounds. This benchmarking strategy allows me to objectively evaluate and rank how well these models generalize to real-world forensic environments across different international institutions.
 
-| Wound Category (GuWID External Evaluation Cohort) | Total Images |
+| Wound Category | Total Images |
 | :--- | :---: |
 | **Entrance Wounds** | **1,883 images** |
 | **Exit Wounds** | **671 images** |
-| **Combined Total (Robustness Stress-Test)** | **2,554 images** |
+| **Combined Total** | **2,554 images** |
 
 * **Scale Contrast:** The external testing cohort (**2,554 images**) is significantly larger than the internal validation subset (**328 images**), providing immense statistical power to evaluate true real-world diagnostic performance and algorithmic clinical safety across distinct institutional frameworks.
 
