@@ -1,9 +1,17 @@
-# CCMEO Gunshot Wound Benchmarking: Entrance vs. Exit Wound Classification
+# CCMEO Gunshot Wound Image Analysis AI Benchmarking: Entrance vs. Exit Wound Classification
 Advanced deep learning benchmark study evaluating Convolutional Network-based (CNN), Vision Transformer-based (ViT), and Hybrid SOTA Architectures on forensic pathology datasets at the Cook County Medical Examiner's Office (CCMEO) with Large-Scale External Validation on the GuWID-UnB Dataset.
 
 ---
 
 ## 📌 Project Overview
+
+### 💡 Quick & Easy Summary
+> 🔍 **"Which image analysis AI model is the smartest at distinguishing a bullet's entrance wound from its exit wound?"**
+> 
+> This repository is a comprehensive **AI Performance Exam (Benchmark Study)** designed to answer that exact question for forensic pathology. 
+> 
+> We trained **9 state-of-the-art computer vision models** using real-world, certified autopsy photography from the **Cook County Medical Examiner's Office (CCMEO)**. Then, to test their true diagnostic adaptability, we gave them a completely blind "Final Exam" using a massive independent dataset from Brazil (**GuWID-UnB**). This allows us to objectively rank how well different artificial brains handle real-world clinical variations without cheating or over-fitting to a single institution.
+
 In forensic pathology, distinguishing between **Entrance Wounds** and **Exit Wounds** is a critical task for reconstructing shooting incidents, determining bullet trajectories, and providing medical-legal testimony. 
 
 This repository implements and benchmarks nine state-of-the-art computer vision architectures divided across three distinct design paradigms (CNNs, Vision Transformers, and Hybrid CNN-ViT Models) to automate and objectively analyze morphology patterns in gunshot wound trauma. Leveraging pure PyTorch and `timm`, all models were evaluated on high-resolution forensic autopsy datasets from the CCMEO and further stress-tested via large-scale external validation to verify real-world algorithmic safety and robustness against severe domain shifts.
